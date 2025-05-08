@@ -30,7 +30,7 @@ Route::delete('/students/{id}', function ($id) {
 //4.patch existing student by id
 Route::patch('/students/{id}', function ($id) {
     $body = request()->json()->all();
-    $student = classroom::updateStudent($id, $body['name'], $body['age']);
+    $student = classroom::updateStudent($id, $body['name'], $body['age'], email: $body['email']);
     return $student
         ? response()->json(['message' => 'Student updated', 'data' => $student])
         : response()->json(['error' => 'Student not found'], 404);
